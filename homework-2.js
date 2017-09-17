@@ -212,23 +212,47 @@ page.onclick=function() {
 	for(i=0;i<page_items.length;i++) {
 		if(page_items[i].className.indexOf("active")!=-1) lastpage=i;
 	}
-	page=Number(event.target.innerText);
-	if(page!=NaN) {
+	page=event.target.innerText;
+	if(page!='>'&&page!='<') {
 		var pages=event.target.parentNode.childNodes;
 		for(i=0;i<pages.length;i++) {
 			pages[i].className='';
 		}
 		event.target.className+="active";
 		ajaxReconstruct(page,type);
-	}else if(event.target.innerText=="<"){
-		page=lastpage-1;
-		console.log(page);
-		if(page!=0)	ajaxReconstruct(page,type);
-	}else if(event.target.innerText==">"){
-		page=lastpage+1;
-		if(page!=page_items.length-1) ajaxReconstruct(page,type);
 	}
 
+}
+function pre_page(){
+	var active=event.target.parentNode.getElementsByClassName("active")[0];
+	var newPage=Number(active.innerText)-1;
+	var type,flag;
+	for(i=0;i<course_class.length;i++){		
+		if(course_class[i].className.indexOf("nav_active")!=-1){
+			type=[i+1]*10;
+		}
+	}
+	if(newPage!=0){
+		ajaxReconstruct(newPage,type);
+		active.className='';
+		page_items[newPage].className+="active";
+	}
+}
+function next_page(){
+	var active=event.target.parentNode.getElementsByClassName("active")[0];
+	var newPage=Number(active.innerText)+1;
+	var type,flag;
+	for(i=0;i<course_class.length;i++){		
+		if(course_class[i].className.indexOf("nav_active")!=-1){
+			type=[i+1]*10;
+		}
+	}
+	if(newPage<page_items.length-1){
+		console.log('newPage='+newPage+' page_items.length='+page_items.length);
+		ajaxReconstruct(newPage,type);
+		active.className='';
+		page_items[newPage].className+="active";
+	}
 }
 window.onload=function() {
 	if(sessionStorage.getItem("loginSuc")==1&&sessionStorage.getItem("followSuc")==1){
