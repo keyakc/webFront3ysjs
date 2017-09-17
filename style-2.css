@@ -316,7 +316,6 @@ input:nth-child(1),input:nth-child(2) {
 	display:inline-block;
 	width:960px;
 	height:1222px;
-	outline:1px solid red;
 }
 #course td {
 	padding:0;
@@ -545,7 +544,6 @@ input:nth-child(1),input:nth-child(2) {
 	width:180px;
 	margin:auto;
 	margin-top:20px;
-	outline:1px solid red;
 }
 #rank_inner>div>img {
 	display:inline-block;
@@ -576,4 +574,59 @@ input:nth-child(1),input:nth-child(2) {
 	height:13px;
 	outline:1px solid green;
 	background:url(img-2/little-pic.png) -25px -30px no-repeat;
+}
+#foot {
+	background-color: rgb(44,51,57);
+	height: 262px;
+}
+#foot_logo {
+	display: inline-block;
+	width:236px;
+	height: 21px;
+	margin-bottom:30px;
+	background: url(img-2/big-pic.png) 0px -1px no-repeat;
+}
+#container {
+	display:block;
+	width:1190px;
+	margin: auto;
+}
+#container>div:nth-child(1) {
+	display: inline-block;
+	height:87px;
+	width:400px;
+	margin-left: 50px;
+	margin-top:91px;
+	color:rgb(162,164,165);
+}
+#container>table {
+	color:rgb(162,164,165);
+	float: right;
+	margin-right: 205px;
+	margin-top: 80px;
+}
+#container td {
+	font-size: 16px;
+	line-height:27px;
+	position: relative;
+}
+#container>tr:nth-child(1) {
+	font-size: 14px
+}
+#container tr>td:nth-child(1) {
+	width:215px;
+	text-align: left;
+}
+#container tr>td:nth-child(2) {
+	width:134px;
+	text-align: left;
+}
+td label {
+	display: inline-block;
+	position: absolute;
+	top:7px;
+left:45px;
+	width:25px;
+	height:17px;
+	background:url(img-2/little-pic.png) 0px -49px no-repeat;
 }
