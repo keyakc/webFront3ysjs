@@ -621,11 +621,11 @@ input:nth-child(1),input:nth-child(2) {
 	width:134px;
 	text-align: left;
 }
-td label {
+#containertd label {
 	display: inline-block;
 	position: absolute;
 	top:7px;
-left:45px;
+	left:45px;
 	width:25px;
 	height:17px;
 	background:url(img-2/little-pic.png) 0px -49px no-repeat;
