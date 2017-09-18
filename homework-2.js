@@ -120,14 +120,15 @@ addEvent(course_nav,'click',course_change,false);
 function course_change(event) {
 	var m=Number(event.target.dataset.courseclass);
 	var n=Number(event.target.dataset.coursepage);
-	//清除样式
+	//清除指定样式
 	for(i=0;i<course_class.length;i++){		
 		course_class[i].className = course_class[i].className.replace(/nav_active/, '');
 	}
 	//根据序号赋active
 	course_class[m].className="nav_active";
-	//Ajax重构
+	//构造type
 	m=(m+1)*10;
+	//Ajax重构
 	ajaxReconstruct(n,m);	
 }
 
@@ -184,7 +185,6 @@ function ajaxReconstruct(pageNo,type) {
 			}
 			for(i=0;i<listJs.list.length;i++) {
 				course_units[i].getElementsByTagName("img")[0].onmouseenter=function () {
-					var seq=event.target.parentNode.dataset.seq;
 					console.log("mouseenter");
 					var course_hover=event.target.parentNode.getElementsByClassName("course_hover")[0];	
 					course_hover.style.display="block";
@@ -201,14 +201,12 @@ var page=document.getElementById("page");
 var page_items=page.getElementsByTagName("a");
 page.onclick=function() {
 	var type;
-	var page,lastpage;
+	var page;
+	//get type
 	for(i=0;i<course_class.length;i++){		
 		if(course_class[i].className.indexOf("nav_active")!=-1){
 			type=[i+1]*10;
 		}
-	}
-	for(i=0;i<page_items.length;i++) {
-		if(page_items[i].className.indexOf("active")!=-1) lastpage=i;
 	}
 	page=event.target.innerText;
 	if(page!='>'&&page!='<') {
@@ -225,6 +223,7 @@ function pre_page(){
 	var active=event.target.parentNode.getElementsByClassName("active")[0];
 	var newPage=Number(active.innerText)-1;
 	var type,flag;
+	//get type
 	for(i=0;i<course_class.length;i++){		
 		if(course_class[i].className.indexOf("nav_active")!=-1){
 			type=[i+1]*10;
@@ -240,6 +239,7 @@ function next_page(){
 	var active=event.target.parentNode.getElementsByClassName("active")[0];
 	var newPage=Number(active.innerText)+1;
 	var type,flag;
+	//get type
 	for(i=0;i<course_class.length;i++){		
 		if(course_class[i].className.indexOf("nav_active")!=-1){
 			type=[i+1]*10;
