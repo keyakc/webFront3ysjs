@@ -164,6 +164,20 @@ function ajaxReconstruct(pageNo,type) {
 							<p>'+nowJsObj.provider+'</p>\
 							<p><label>&nbsp&nbsp&nbsp&nbsp'+nowJsObj.learnerCount+'</label></p>\
 							<p>￥'+nowJsObj.price+'</p>\
+							<div class="course_hover">\
+								<div>\
+									<img src="'+nowJsObj.middlePhotoUrl+'">\
+									<div class="right_inner">\
+										<p>'+nowJsObj.name+'</p>\
+										<p><label></label>&nbsp&nbsp&nbsp&nbsp&nbsp'+nowJsObj.learnerCount+'人在学</p>\
+										<div>发布者：'+nowJsObj.provider+'</div>\
+										<div>分类：'+nowJsObj.catagoryName+'</div>\
+									</div>\
+								</div>\
+								<div>\
+									<p>'+nowJsObj.description+'</p>\
+								</div>\
+							</div>\
 						</div>\
 					</td>\
 					';				
@@ -172,28 +186,12 @@ function ajaxReconstruct(pageNo,type) {
 				course_units[i].getElementsByTagName("img")[0].onmouseenter=function () {
 					var seq=event.target.parentNode.dataset.seq;
 					console.log("mouseenter");
-					var hoverStr='\
-					<div class="course_hover">\
-						<div>\
-							<img src="'+listJs.list[seq].middlePhotoUrl+'">\
-							<div class="right_inner">\
-								<p>'+listJs.list[seq].name+'</p>\
-								<p><label></label>&nbsp&nbsp&nbsp&nbsp&nbsp'+listJs.list[seq].learnerCount+'人在学</p>\
-								<div>发布者：'+listJs.list[seq].provider+'</div>\
-								<div>分类：'+listJs.list[seq].catagoryName+'</div>\
-							</div>\
-						</div>\
-						<div>\
-							<p>'+listJs.list[seq].description+'</p>\
-						</div>\
-					</div>\
-					';
-					course_units[seq].innerHTML+=hoverStr;
-					var course_hover=course_units[seq].getElementsByClassName("course_hover")[0];
+					var course_hover=event.target.parentNode.getElementsByClassName("course_hover")[0];	
+					course_hover.style.display="block";
 					course_hover.onmouseleave=function () {	
 					console.log("mouseleave");				
-					course_hover.parentNode.removeChild(course_hover);
-					};		
+					course_hover.style.display="none";
+					};
 				};
 			}	
 		};

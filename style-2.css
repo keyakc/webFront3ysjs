@@ -384,7 +384,7 @@ input:nth-child(1),input:nth-child(2) {
 	top:-10px;
 	left:-10px;
 	z-index:1;
-	display:block;
+	display:none;
 	width:480px;
 	height:240px;
 	/*语法*/
