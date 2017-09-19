@@ -286,7 +286,6 @@ input:nth-child(1),input:nth-child(2) {
 	margin-top:80px;
 	width:1205px;
 	margin:auto;
-	outline:1px solid blue;
 	position:relative;
 }
 #course_nav {
