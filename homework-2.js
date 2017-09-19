@@ -17,6 +17,7 @@ var unfoc=document.getElementById("unfoc");
 addEvent(unfoc,'click',unfollow,false);
 var banner_control=document.getElementById("banner_control");
 var control_items=document.getElementsByClassName("control_item");
+var rank_inner=document.getElementById("rank_inner");
 for(i=0;i<control_items.length;i++){
 	addEvent(control_items[i],'click',banner_click,false)
 }
@@ -185,18 +186,35 @@ function ajaxReconstruct(pageNo,type) {
 			}
 			for(i=0;i<listJs.list.length;i++) {
 				course_units[i].getElementsByTagName("img")[0].onmouseenter=function () {
-					console.log("mouseenter");
 					var course_hover=event.target.parentNode.getElementsByClassName("course_hover")[0];	
 					course_hover.style.display="block";
-					course_hover.onmouseleave=function () {	
-					console.log("mouseleave");				
+					course_hover.onmouseleave=function () {				
 					course_hover.style.display="none";
 					};
 				};
-			}	
+			}
+			var sortList=listJs.list.sort(byLearner);
+			
+			console.log(sortList[0].name);
+			rank_inner.innerHTML='';
+			for(i=0;i<9;i++) {
+				var str='\
+				<div>\
+					<img src="'+sortList[i].smallPhotoUrl+'">\
+					<div>\
+						<p>'+sortList[i].name+'</p>\
+						<p>&nbsp&nbsp<label></label>'+sortList[i].learnerCount+'人</p>\
+					</div>\
+				</div>\
+				';
+				rank_inner.innerHTML+=str;
+			}
 		};
 	};
 }
+function byLearner(a,b) {
+				return b.learnerCount-a.learnerCount;
+			}
 var page=document.getElementById("page");
 var page_items=page.getElementsByTagName("a");
 page.onclick=function() {
