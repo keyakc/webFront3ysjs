@@ -200,7 +200,9 @@ function ajaxReconstruct(pageNo,type) {
 			for(i=0;i<9;i++) {
 				var str='\
 				<div>\
+					<div>\
 					<img src="'+sortList[i].smallPhotoUrl+'">\
+					</div>\
 					<div>\
 						<p>'+sortList[i].name+'</p>\
 						<p>&nbsp&nbsp<label></label>'+sortList[i].learnerCount+'人</p>\
