@@ -119,6 +119,7 @@ addEvent(course_nav,'click',course_change,false);
 
 
 function course_change(event) {
+	var event = event||window.event;
 	var m=Number(event.target.dataset.courseclass);
 	var n=Number(event.target.dataset.coursepage);
 	//清除指定样式
@@ -186,6 +187,7 @@ function ajaxReconstruct(pageNo,type) {
 			}
 			for(i=0;i<listJs.list.length;i++) {
 				course_units[i].getElementsByTagName("img")[0].onmouseenter=function () {
+					var event = event||window.event;
 					var course_hover=event.target.parentNode.getElementsByClassName("course_hover")[0];	
 					course_hover.style.display="block";
 					course_hover.onmouseleave=function () {				
@@ -219,7 +221,8 @@ function byLearner(a,b) {
 			}
 var page=document.getElementById("page");
 var page_items=page.getElementsByTagName("a");
-page.onclick=function() {
+page.onclick=function(event) {
+	var event = event||window.event;
 	var type;
 	var page;
 	//get type
@@ -230,6 +233,7 @@ page.onclick=function() {
 	}
 	page=event.target.innerText;
 	if(page!='>'&&page!='<') {
+		var event = event||window.event;
 		var pages=event.target.parentNode.childNodes;
 		for(i=0;i<pages.length;i++) {
 			pages[i].className='';
@@ -239,7 +243,8 @@ page.onclick=function() {
 	}
 
 }
-function pre_page(){
+function pre_page(event){
+	var event = event||window.event;
 	var active=event.target.parentNode.getElementsByClassName("active")[0];
 	var newPage=Number(active.innerText)-1;
 	var type,flag;
@@ -255,7 +260,7 @@ function pre_page(){
 		page_items[newPage].className+="active";
 	}
 }
-function next_page(){
+function next_page(event){
 	var active=event.target.parentNode.getElementsByClassName("active")[0];
 	var newPage=Number(active.innerText)+1;
 	var type,flag;
